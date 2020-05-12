@@ -50,8 +50,6 @@
   </el-form-item>
 
 
-
-
   <el-form-item>
     <el-button type="danger" @click="submitForm('ruleForm')" class="login-btn block">提交</el-button>
     <!--<el-button @click="resetForm('ruleForm')">重置</el-button>-->
@@ -219,7 +217,11 @@ export default {
         /**获取验证码
          * **/
         const getSms=(() => {
-            GetSms()
+            let data ={
+                username: ruleForm.username
+            }
+
+            GetSms(data)
         })
 
         /**提交表单**/

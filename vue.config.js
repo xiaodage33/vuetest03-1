@@ -122,6 +122,7 @@ module.exports = {
             proxy: {
                 //配置跨域
                 '/__api__': {
+                        // target: "http://127.0.0.1:9999/drftest/show",
                         target: "http://www.web-jshtml.cn/productapi",
                         ws:true,
                         changOrigin: true,

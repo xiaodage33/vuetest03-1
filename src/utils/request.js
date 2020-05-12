@@ -11,7 +11,7 @@ import axios from 'axios'
 const service = axios.create({
     //视频验证码api地址：http://www.web-jshtml.cn/productapi/getSms
     // baseURL: 'http://127.0.0.1:9999/drftest/show',
-    // baseURL: BASEURL,   //http://127.0.0.1:9999/drftest/show这个地址等于 api 。已经替换了vue地址+api
+    // baseURL: BASEURL,    //http://127.0.0.1:9999/drftest/show这个地址等于 api 。已经替换了vue地址+api
     timeout: 1000,
 
 });
