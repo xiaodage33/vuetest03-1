@@ -69,7 +69,7 @@ module.exports = {
     chainWebpack: (config) => {
     },
 
-        configureWebpack: (config) => {
+    configureWebpack: (config) => {
     config.resolve = { // 配置解析别名
       extensions: ['.js', '.json', '.vue'],//自动添加文件名后缀
       alias: {
@@ -95,17 +95,48 @@ module.exports = {
     //     loaderOptions: { css: {}, less: {} }
     // },
     // 所有 webpack-dev-server 的选项都支持
+    // devServer: {
+    //     open: false,  //编译完成是否打开页面
+    //     host: '0.0.0.0',   //指定使用地址，默认localshot，0.0.0.0代表外界范围
+    //     port: 8080,           //访问端口
+    //     https: false,  //编译失败时候刷新页面
+    //     hot: true,    //开启热加载
+    //     hostOnly: false,                                      //http://www.web-jshtml.cn/productapi/getSms/
+    //     // proxy: null,  //设置代理 ，// 这个地址换成了 api；；http://www.web-jshtml.cn/productapi
+    //     proxy: {
+    //         '/Api': {
+    //             target: "http://127.0.0.1:9999/drftest/show",
+    //             changeOrigin: true,
+    //             pathRewrite:{
+    //                 '^/Api': ''
+    //             }
+    //         }
+    //     }
+    // },
     devServer: {
-        // open: false,
-        // port: 8080,
-        // // 跨域
-        // proxy: {
-        //     '/api/': {
-        //         target: 'http://192.168.0.11/',
-        //         changeOrigin: true
-        //     }
-        // }
-    },
+            open: false, //浏览器自动打开页面
+            port: 8080,
+            https: false,
+            hot: true,
+            hotOnly: false, //热更新（webpack已实现了，这里false即可）
+            proxy: {
+                //配置跨域
+                '/__api__': {
+                        target: "http://www.web-jshtml.cn/productapi",
+                        ws:true,
+                        changOrigin: true,
+                        pathRewrite: {
+                            '^/__api__': ''  //正则匹配到request那个api
+                        }
+                    }
+
+        },
+        overlay:{
+           warnings:true,  //在全屏模式下是否显示脚本错误
+           errors: true,
+        }},
+
+
     // 是否为 Babel 或 TypeScript 使用 thread-loader
     parallel: require('os').cpus().length > 1,
     // 向 PWA 插件传递选项

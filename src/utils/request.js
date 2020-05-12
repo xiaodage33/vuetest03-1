@@ -4,10 +4,15 @@
 
 import axios from 'axios'
 
+// const BASEURL = process.env.NODE_ENV === 'production' ? '' : 'http://www.web-jshtml.cn/productapi';
+// const BASEURL = process.env.NODE_ENV === 'production' ? '' : 'api';
+
 //创建axios，赋给变量service
 const service = axios.create({
-    baseURL: 'https://some-domain.com/api/',
-    timeout: 1000
+    //视频验证码api地址：http://www.web-jshtml.cn/productapi/getSms
+    // baseURL: 'http://127.0.0.1:9999/drftest/show',
+    // baseURL: BASEURL,   //http://127.0.0.1:9999/drftest/show这个地址等于 api 。已经替换了vue地址+api
+    timeout: 1000,
 
 });
 

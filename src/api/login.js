@@ -6,10 +6,11 @@ import service from "../utils/request"
  * **/
 export function GetSms() {
     service.request({
-        method: "get",
-        url: 'GetSms/',
-        data: {},
+        method: "post",
+        url: '/__api__/getSms/',
+        // url: '/getSms',
 
+        data: {},
     })
 }
 

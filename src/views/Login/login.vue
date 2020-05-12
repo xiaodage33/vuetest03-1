@@ -66,9 +66,7 @@
 </template>
 
 <script>
-import {
-
-    GetSms } from "../../api/login"
+import {GetSms} from "../../api/login"
 import axios from 'axios'
      /*在vue中开发是用数据驱动视图渲染*/
            // js 操作DOM元素
