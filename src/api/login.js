@@ -5,7 +5,7 @@ import service from "../utils/request"
  * 获取验证码,暂时使用邮箱操作
  * **/
 export function GetSms(data) {
-    service.request({
+    return service.request({
         method: "post",
         url: '/__api__/getSms/',
         // url: '/getSms/',

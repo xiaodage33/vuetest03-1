@@ -232,16 +232,28 @@ root: (...)
         /**获取验证码
          * **/
         const getSms=(() => {
-            // 进行提示，判断有没有输入信息
+            // 前端拦截进行提示，判断有没有输入信息
             if(ruleForm.username == ''){
-                root.$message.error('邮箱不能为空');                        return false
+                root.$message.error('邮箱不能为空');
+                return false
+            }
+
+            if(validateEmial(ruleForm.username)){
+                root.$message.error("邮箱格式有误，请重新输入！！")
+                return false
+
             }
 
             let data ={
-                username: ruleForm.username
+                username: ruleForm.username,
+                module:'login'
             }
+            GetSms(data).then(response => {
+                console.log(response)
+            }).catch(error =>{
+                console.log(error)
+            })
 
-            GetSms(data)
         })
 
         /**提交表单**/

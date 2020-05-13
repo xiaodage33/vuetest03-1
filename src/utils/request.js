@@ -39,13 +39,12 @@ service.interceptors.response.use(function(response){
         Message.error(data.message);
         return Promise.reject(data);
     }
+    else{
+        return response;
+    }
 
-    console.log(response)
+    // console.log(response)
 
-
-
-
-    return response
 }, function(error) {
     //对响应错误做点什么
     return Promise.reject(error);
