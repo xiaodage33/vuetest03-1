@@ -33,3 +33,10 @@ export function GetSms(data) {
 /**
  * 获取注册
  * **/
+export function Register(data) {
+    return service.request({
+        method: "post",
+        url: "/__api__/register/",
+        data
+    })
+}

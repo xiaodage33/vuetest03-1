@@ -294,7 +294,6 @@ root: (...)
         //表单验证
         const submitForm = (formName => {
             // context.refs[formName].validate((valid) => { 和refs 一样，
-
             // axios.post('/user')
             //     .then(function (response) {
             //     console.log(response);
@@ -304,8 +303,22 @@ root: (...)
             // });
             //提交表单
             // alert("表单验证")
+
             refs[formName].validate((valid) => {
             if (valid) {
+                let requestdata = {
+                    username: ruleForm.username ,
+                    password: ruleForm.password,
+                    code: ruleForm.code,
+                    module: 'register',
+                }
+                    Register(requestdata).then(response =>{
+                        console.log(response)
+
+                    }).catch(error =>{
+
+                    })
+
                 alert('submit!');
             } else {
                 console.log('error submit!!');
@@ -325,7 +338,7 @@ root: (...)
             // },1000)
 
             time--;
-            console.log(time)
+            // console.log(time)
             if(time ===0){
                 clearInterval(timer.value)
                 codeButtonStatus.status = false
