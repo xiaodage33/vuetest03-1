@@ -18,7 +18,7 @@
 
 
    <!--表单-->
-  <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm"  class="login-form" size="medium">
+  <el-form :model="ruleForm" status-icon :rules="rules" ref="loginForm"  class="login-form" size="medium">
   <el-form-item  prop="username" class="item-from">
       <label for="username"> 邮箱   </label>
     <el-input id="username" type="text" v-model="ruleForm.username" autocomplete="off"></el-input>
@@ -38,11 +38,11 @@
             <label for="code"> 验证码   </label>
 
       <el-row :gutter="10">
-         <el-col :span="16">
+         <el-col :span="15">
              <el-input id="code" v-model.number="ruleForm.code" > </el-input>
          </el-col>
-         <el-col :span="8">
-             <el-button type="success" class="block" @click="getSms()">获取验证码</el-button>
+         <el-col :span="9">
+             <el-button type="success" class="block" @click="getSms()" :disabled="codeButtonStatus.status">{{codeButtonStatus.text}}</el-button>
           </el-col>
       </el-row>
 
@@ -52,19 +52,13 @@
 
   <el-form-item>
         <!--//利用true和false判断 {{model ==='login' ? "登录" :"注册"}}  等于login是true ，否注false-->
-      <el-button type="danger" @click="submitForm('ruleForm')" class="login-btn block" :disabled="loginButtonStatus" >{{model ==='login' ? "登录" :"注册"}}</el-button>
+      <el-button type="danger" @click="submitForm('loginForm')" class="login-btn block" :disabled="loginButtonStatus" >{{model ==='login' ? "登录" :"注册"}}</el-button>
     <!--<el-button @click="resetForm('ruleForm')">重置</el-button>-->
 
   </el-form-item>
 </el-form>
         </div>
-        <div v-if="html == 1"> aaaa </div>
-        <div v-else-if="html =='cc' "> bbbb</div>
-        <div v-else>ccc是不是未注册到return返回此值 </div>
 
-        <div testa v-html="html1"> </div>
-        <div v-html="html"> </div>
-       <div v-text="testw"> </div>
 
     </div>
 </template>
@@ -95,9 +89,9 @@ root: (...)
  setup(props, {refs,root}) {
 
 
-            const testa = ref('cc')
-            const html1 =ref("<h1>he ceshi test </h1>")
-            const testw = ref("<h3>sdf</h3>")
+            // const testa = ref('cc')
+            // const html1 =ref("<h1>he ceshi test </h1>")
+            // const testw = ref("<h3>sdf</h3>")
 
             //表单的数据
             //验证用户名邮箱
@@ -185,8 +179,17 @@ root: (...)
         //模块值
         const model = ref('login')
 
-        //登录按钮禁用状态
+        //登录按钮禁用状态禁用登录
         const loginButtonStatus = ref(true);
+
+        //验证码按钮状态
+        const codeButtonStatus = reactive({
+          status: false,
+          text: '获取验证码'
+        });
+        //倒计时
+        const timer = ref(null)
+
 
         //表单绑定数据
         const ruleForm = reactive({
@@ -227,16 +230,15 @@ root: (...)
 
             });
 
-
-            //修改模块
-            // data.current = true
-            // this.model = data.type
-
-
             //重新赋值，对象还是data不变
             // 高光
             data.current = true
             model.value = data.type
+
+            //重置表单
+            // this.$refs[formName].resetFields();  //2.0写法
+            refs.loginForm.resetFields(); //3.0
+
         })
 
         /**获取验证码
@@ -253,22 +255,42 @@ root: (...)
                 return false
 
             }
-
+            //获取验证码
             let data ={
                 username: ruleForm.username,
+                module: model.value
                 //邮箱是否存在进行验证
                 // module:'login'
+
             }
-            GetSms(data).then(response => {
-                console.log(response)
-            }).catch(error =>{
-                console.log(error)
+            //修改获取验证码按钮时的状态
+            codeButtonStatus.status = true
+            codeButtonStatus.text = '发送中'
+
+            setTimeout(()=>{
+               //延时多长时间，显示发送中
+
+                })
+                GetSms(data).then(response => {
+
+                    //点击注册弹出验证码提示框
+                    let data = response.data
+                    root.$message({
+                        message: data.message,
+                        type:'success'
+
+                    })
+                    //启动登录或注册按钮
+                    loginButtonStatus.value = false
+                    countDown(60)
+                    //调定时器，倒计时
+                    console.log(data)
+                }).catch(error =>{
+                    console.log(error)
+                },3000)
             })
 
-        })
-
         /**提交表单**/
-
         //表单验证
         const submitForm = (formName => {
             // context.refs[formName].validate((valid) => { 和refs 一样，
@@ -280,12 +302,9 @@ root: (...)
             //     .catch(function (error) {
             //     console.log(error);
             // });
-
-
-
-            alert("表单验证")
+            //提交表单
+            // alert("表单验证")
             refs[formName].validate((valid) => {
-
             if (valid) {
                 alert('submit!');
             } else {
@@ -295,13 +314,36 @@ root: (...)
         })
     })
 
+    /**倒计时
+     **/
+    const countDown = ((number)=> {
+        // 有两种倒计时，setTimeout只执行一次
+        //setInterval 不断执行，需要条件才会停止
+        let time = number
+        timer.value = setInterval(() => {
+            //     console.log('setTimeout')
+            // },1000)
+
+            time--;
+            console.log(time)
+            if(time ===0){
+                clearInterval(timer.value)
+                codeButtonStatus.status = false
+                codeButtonStatus.text = '再次获取验证码'
+            }
+            else{
+            codeButtonStatus.text = `倒计时${time}秒`    //es6写法
+           }
+        },1000)
+    })
+
+
 
         /**生命周期 挂载完成后再这个位置，页面刷新 就会响应，不会出发点击按钮**/
         onMounted(() => {
             // GetSms()
             // alert(1111) //刷新测试
         })
-
         return {
             menutab,
             model,
@@ -311,16 +353,14 @@ root: (...)
             submitForm,
             getSms,
             loginButtonStatus,
-            html1,
-            testw,
-            testa,
-
-
-
-
-
+            codeButtonStatus,
+            // html1,  //测试vif v-show等
+            // testw,
+            // testa,
         }
-    }}
+
+
+}}
 
 </script>
 
