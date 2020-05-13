@@ -3,6 +3,7 @@
  * */
 
 import axios from 'axios'
+import {Message} from 'element-ui'
 
 // const BASEURL = process.env.NODE_ENV === 'production' ? '' : 'http://www.web-jshtml.cn/productapi';
 // const BASEURL = process.env.NODE_ENV === 'production' ? '' : 'api';
@@ -32,6 +33,17 @@ service.interceptors.request.use(function(config){
 //添加响应拦截器
 service.interceptors.response.use(function(response){
     //对响应数据做点什么
+    let data = response.data
+    if(data.resCode !== 0){
+        //后端的拦截
+        Message.error(data.message);
+    }
+
+    console.log(response)
+
+
+
+
     return response
 }, function(error) {
     //对响应错误做点什么

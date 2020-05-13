@@ -51,8 +51,11 @@
 
 
   <el-form-item>
-    <el-button type="danger" @click="submitForm('ruleForm')" class="login-btn block">提交</el-button>
+        <!--//利用true和false判断 {{model ==='login' ? "登录" :"注册"}}  等于login是true ，否注false-->
+      <el-button type="danger" @click="submitForm('ruleForm')" class="login-btn block" :disabled="loginButtonStatus" >{{model ==='login' ? "登录" :"注册"}}</el-button>
     <!--<el-button @click="resetForm('ruleForm')">重置</el-button>-->
+
+
   </el-form-item>
 </el-form>
 
@@ -74,7 +77,17 @@ import { stripscript,validateEmial,validatepass,validatecode } from '@/utils/val
 export default {
     name: 'login',
     // setup(props, context) {   //上下两个写法，对提交{refs}，refs[formName].validate((valid) =>还是context.refs[formName].validate((valid) =>
-    setup(props, {refs}) {
+    // console.log(context)
+/**  console.log(context) 打印出来
+ * attrs: Object
+emit: ƒ ()  this.$atters  都是对应2.0内容
+isServer: (...)
+listeners: (...)
+parent: (...)
+refs: (...)
+root: (...)
+ * **/
+ setup(props, {refs,root}) {
 
             //表单的数据
             //验证用户名邮箱
@@ -161,6 +174,10 @@ export default {
         ])
         //模块值
         const model = ref('login')
+
+        //登录按钮禁用状态
+        const loginButtonStatus = ref(true);
+
         //表单绑定数据
         const ruleForm = reactive({
             username: '',
@@ -184,8 +201,6 @@ export default {
             code: [
                 {validator: validateCode, trigger: 'blur'}
             ],
-
-
         })
 
 
@@ -217,6 +232,11 @@ export default {
         /**获取验证码
          * **/
         const getSms=(() => {
+            // 进行提示，判断有没有输入信息
+            if(ruleForm.username == ''){
+                root.$message.error('邮箱不能为空');                        return false
+            }
+
             let data ={
                 username: ruleForm.username
             }
@@ -267,6 +287,7 @@ export default {
             toggleMneu,
             submitForm,
             getSms,
+            loginButtonStatus,
 
         }
     }}
