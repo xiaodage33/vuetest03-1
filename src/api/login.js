@@ -28,6 +28,15 @@ export function GetSms(data) {
 /**
  * 登录
  * **/
+export function Login(data) {
+    return service.request({
+        method: "post",
+        url:"/__api__/login/",
+        data
+    })
+
+}
+
 
 
 /**
