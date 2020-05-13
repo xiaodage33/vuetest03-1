@@ -20,6 +20,7 @@ const service = axios.create({
 //打印出开发环境
 //可以自定义环境变量生产和 测试
 console.log(process.env.NODE_ENV)
+console.log(process.env.VUE_APP_ABC)
 //添加请求拦截器
 service.interceptors.request.use(function(config){
     //再发送请求前做什么

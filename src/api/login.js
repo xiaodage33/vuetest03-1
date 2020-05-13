@@ -6,12 +6,11 @@ import service from "../utils/request"
  * **/
 export function GetSms(data) {
     service.request({
-        method: "get",
-        url: '/__api__/',
+        method: "post",
+        url: '/__api__/getSms/',
         // url: '/getSms/',
-        // url: '',
-
-        data,
+        // url: '/',
+        data
         //data:data,左边的data变量名key，后台接收的，右边data是接收的参数，如果两者都同名情况下，可以写成一个data es6写法
 
     })

@@ -217,12 +217,11 @@ export default {
         /**获取验证码
          * **/
         const getSms=(() => {
-            // let data ={
-            //     username: ruleForm.username
-            // }
-            //
-            // GetSms(data)
-            GetSms()
+            let data ={
+                username: ruleForm.username
+            }
+
+            GetSms(data)
         })
 
         /**提交表单**/
