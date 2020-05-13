@@ -37,6 +37,7 @@ service.interceptors.response.use(function(response){
     if(data.resCode !== 0){
         //后端的拦截
         Message.error(data.message);
+        return Promise.reject(data);
     }
 
     console.log(response)
