@@ -20,26 +20,26 @@
    <!--表单-->
   <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm"  class="login-form" size="medium">
   <el-form-item  prop="username" class="item-from">
-      <label> 邮箱   </label>
-    <el-input type="text" v-model="ruleForm.username" autocomplete="off"></el-input>
+      <label for="username"> 邮箱   </label>
+    <el-input id="username" type="text" v-model="ruleForm.username" autocomplete="off"></el-input>
   </el-form-item>
 
   <el-form-item  prop="password" class="item-from">
-            <label> 密码   </label>
-    <el-input type="text" v-model="ruleForm.password" autocomplete="off"></el-input>
+            <label for="password"> 密码   </label>
+    <el-input id="password" type="text" v-model="ruleForm.password" autocomplete="off"></el-input>
   </el-form-item>
 <!--//绑定模块  v-show="model ==='reg'",跟下面model定义值一样，如果等于register才显示，不等于不显示-->
-  <el-form-item  prop="passwords" class="item-from" v-show="model ==='register'">
-            <label> 重复密码   </label>
-    <el-input type="text" v-model="ruleForm.passwords" autocomplete="off" minlength="6" maxlength="20"></el-input>
+  <el-form-item   prop="passwords" class="item-from" v-show="model ==='register'">
+            <label for="passwords"> 重复密码   </label>
+    <el-input id="passwords" type="text" v-model="ruleForm.passwords" autocomplete="off" minlength="6" maxlength="20"></el-input>
   </el-form-item>
 
   <el-form-item  prop="code" class="item-from">
-            <label> 验证码   </label>
+            <label for="code"> 验证码   </label>
 
       <el-row :gutter="10">
          <el-col :span="16">
-             <el-input v-model.number="ruleForm.code" > </el-input>
+             <el-input id="code" v-model.number="ruleForm.code" > </el-input>
          </el-col>
          <el-col :span="8">
              <el-button type="success" class="block" @click="getSms()">获取验证码</el-button>
@@ -55,21 +55,26 @@
       <el-button type="danger" @click="submitForm('ruleForm')" class="login-btn block" :disabled="loginButtonStatus" >{{model ==='login' ? "登录" :"注册"}}</el-button>
     <!--<el-button @click="resetForm('ruleForm')">重置</el-button>-->
 
-
   </el-form-item>
 </el-form>
-
-
         </div>
+        <div v-if="html == 1"> aaaa </div>
+        <div v-else-if="html =='cc' "> bbbb</div>
+        <div v-else>ccc是不是未注册到return返回此值 </div>
 
+        <div testa v-html="html1"> </div>
+        <div v-html="html"> </div>
+       <div v-text="testw"> </div>
 
     </div>
 </template>
 
 <script>
-import {GetSms} from "../../api/login"
 import axios from 'axios'
-     /*在vue中开发是用数据驱动视图渲染*/
+import {Message} from 'element-ui';
+import {GetSms,Register,Login} from "../../api/login";
+
+/*在vue中开发是用数据驱动视图渲染*/
            // js 操作DOM元素
 //{ stripscript }如果里面还有别的函数aa,bb引用 { stripscript，aa，bb }
 import { reactive,ref,isRefs,onMounted } from '../../../node_modules/@vue/composition-api'
@@ -88,6 +93,11 @@ refs: (...)
 root: (...)
  * **/
  setup(props, {refs,root}) {
+
+
+            const testa = ref('cc')
+            const html1 =ref("<h1>he ceshi test </h1>")
+            const testw = ref("<h3>sdf</h3>")
 
             //表单的数据
             //验证用户名邮箱
@@ -246,7 +256,8 @@ root: (...)
 
             let data ={
                 username: ruleForm.username,
-                module:'login'
+                //邮箱是否存在进行验证
+                // module:'login'
             }
             GetSms(data).then(response => {
                 console.log(response)
@@ -300,6 +311,13 @@ root: (...)
             submitForm,
             getSms,
             loginButtonStatus,
+            html1,
+            testw,
+            testa,
+
+
+
+
 
         }
     }}
