@@ -17,8 +17,6 @@
 
                 <!--<li>注册  </li>-->
             </ul>
-
-
             <!--表单-->
             <el-form :model="ruleForm" status-icon :rules="rules" ref="loginForm" class="login-form" size="medium">
                 <el-form-item prop="username" class="item-from">
@@ -185,10 +183,10 @@ export default {
             {txt: '注册', current: false, type: 'register'}
         ])
         //模块值
-        const model = ref('login')
+        const model = ref('login');
 
         //登录按钮禁用状态禁用登录true是打开禁用
-        const loginButtonStatus = ref(false);
+        const loginButtonStatus = ref(true);
 
         //验证码按钮状态
         const codeButtonStatus = reactive({
@@ -316,14 +314,18 @@ export default {
 
                 // return false  //暂时取消下面执行测试
                 refs[formName].validate((valid) => {
-                    //这里面是表单验证通通过
-                    if(model.value ==='login'){
-                        login()
-                    }else{
-                        register()
-                    }
+                    //这里面是表单验证通通过  //三元运算
+
+                 // 使用三元运算代替下面if
+                    // if(model.value ==='login'){
+                    //     login()
+                    // }else{
+                    //     register()
+                    // }
 
                     if (valid) {
+                        model.value === 'login' ? login(): register()
+                        clearCountDown() //清除验证码发送状态
 
 
                         // alert('submit!');
@@ -348,7 +350,7 @@ export default {
             }).catch(error =>{
 
             })
-            clearCountDown()
+            clearCountDown() //清除验证码发送状态
 
 
         })
