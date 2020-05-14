@@ -31,7 +31,15 @@ Vue.use(VueRouter)
     path: '/console',
     name: 'Console',
         //引入结构的页面
-    component: () => import("../views/Layout/index.vue")
+    component: () => import("../views/Layout/index.vue"),
+    children:[
+    {
+      path: "/console",
+      name: "Console",
+      component:()=>import("../views/Console/index.vue")
+
+
+    }]
   },
 
 

@@ -1,31 +1,31 @@
 <template>
-   <div>
-    <LayoutHeader/>
-    <LayoutMain/>
-    <LayoutNav/>
-       <div> ppppp:  <div> index.vue  写结构  </div>
-   </div>
+   <div id="layout">
+       <LayoutHeader />
+       <LayoutMain />
+           <LayoutNav />
    </div>
 </template>
 
 <script>
     //组件、引入结构导航菜单，内容，和头
-import LayoutHeader from './Compoents/header'
-import LayoutMain from './Compoents/Main'
-import LayoutNav from './Compoents/Nav'
+import LayoutHeader from './Components/Header'
+import LayoutMain from './Components/Main'
+import LayoutNav from './Components/Nav'
 
+export default {
+    name: 'layout',
 
-
-
-    export default {
-    compoents:{LayoutHeader,LayoutMain,LayoutNav},
-        name: "layout",
-        setup(){
+    components:{LayoutHeader,LayoutMain,LayoutNav},
+    setup(){
 
         }
     }
 </script>
 
 <style scoped>
+#layout{
+    background-color: #f7f7f7 ;
+}
+
 
 </style>
