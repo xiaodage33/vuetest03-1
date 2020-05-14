@@ -375,7 +375,6 @@ export default {
             }).catch(error => {
             //失败时候的代码
             })
-            clearCountDown()
 
 
             })
