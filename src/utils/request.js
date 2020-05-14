@@ -22,15 +22,32 @@ const service = axios.create({
 //可以自定义环境变量生产和 测试
 console.log(process.env.NODE_ENV)
 console.log(process.env.VUE_APP_ABC)
+
+
 //添加请求拦截器
+/**请求接口前，做一些数据处理拦截，请求头**/
 service.interceptors.request.use(function(config){
     //再发送请求前做什么
+    //后台需要前端这边传象关的参数（在请求头）
+    //Tokey  ，userId，sui
+    console.log(config.headers)
+
+    //最终目的不是在请求头参加参数,在请求头显示
+    config.headers['Tokey']='19000'
+    config.headers['userId'] ='19111'
+    config.headers['sui']='19222'
+    config.headers['www']='sW12'
+
+
     return config;
 },function (error) {
     return Promise.reject(error);
 });
 
+
 //添加响应拦截器
+/**请求接口返回数据进行拦截，响应拦截**/
+
 service.interceptors.response.use(function(response){
     //对响应数据做点什么
     let data = response.data

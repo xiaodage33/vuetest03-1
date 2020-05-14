@@ -69,6 +69,7 @@
 </template>
 
 <script>
+import sha1 from 'js-sha1'
 import axios from 'axios'
 import {Message} from 'element-ui';
 import {GetSms, Register, Login} from "../../api/login";
@@ -220,17 +221,17 @@ export default {
             code: [
                 {validator: validateCode, trigger: 'blur'}
             ],
-        })
+        });
 
 
         // console.log(isRef(model) ? true : false)
 
 
-        // /** 声明函数，把下面给干掉了  **/
+        // /** 声明函数============================================  **/
         const toggleMneu = (data => {
             //点击按钮后在控制台输出点就内容
             console.log(data)
-            menutab.forEach(elem => {
+            menutab.forEach((elem,index)=> {
                 //可以点击互相换
                 elem.current = false
 
@@ -243,9 +244,12 @@ export default {
 
             //重置表单
             // this.$refs[formName].resetFields();  //2.0写法
-            refs.loginForm.resetFields(); //3.0
-
+            refs.loginForm.resetFields(); //3.0写法重置调单
+            clearCountDown() // 切换后验证码状态清除
         })
+
+
+
 
         /**获取验证码模块
          * **/
@@ -325,7 +329,7 @@ export default {
 
                     if (valid) {
                         model.value === 'login' ? login(): register()
-                        clearCountDown() //清除验证码发送状态
+                        // clearCountDown() //清除验证码发送状态
 
 
                         // alert('submit!');
@@ -340,11 +344,11 @@ export default {
         const login =(()=>{
             let requestData={
                 username : ruleForm.username,
-                password : ruleForm.password,
+                password : sha1(ruleForm.password),
                 code: ruleForm.code
             }
             Login(requestData).then(response =>{
-                console.log('登录结果')
+                console.log('登录成功')
                 console.log(response)
 
             }).catch(error =>{
@@ -359,7 +363,7 @@ export default {
         const register = (()=>{
             let requestdata = {
               username: ruleForm.username,
-              password: ruleForm.password,
+              password: sha1(ruleForm.password),
               code: ruleForm.code,
               module: 'register',
             }
