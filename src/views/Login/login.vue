@@ -363,6 +363,13 @@ export default {
                 console.log('登录成功')
                 console.log(response)
 
+            //====路由跳转=======================
+             root.$router.push({
+                 //页面跳转
+                 name:'Console'
+
+             })
+
             }).catch(error =>{
 
             })

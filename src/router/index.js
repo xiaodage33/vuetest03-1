@@ -26,6 +26,14 @@ Vue.use(VueRouter)
     component: () => import("../views/Login/login.vue")
   },
 
+    //后台路由控制台
+    {
+    path: '/console',
+    name: 'Console',
+        //引入结构的页面
+    component: () => import("../views/Layout/index.vue")
+  },
+
 
   // {
   //   path: '/about',
