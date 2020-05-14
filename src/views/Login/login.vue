@@ -247,6 +247,12 @@ export default {
             refs.loginForm.resetFields(); //3.0写法重置调单
             clearCountDown() // 切换后验证码状态清除
         })
+        //更新按钮的状态 --优化到一个函数
+        const updateButtonStatus =((params)=>{
+           //修改获取验证码按钮时的状态
+            codeButtonStatus.status = params.status;
+            codeButtonStatus.text = params.txt;
+        })
 
 
 
@@ -273,9 +279,15 @@ export default {
                 // module:'login'
 
             }
-            //修改获取验证码按钮时的状态
-            codeButtonStatus.status = true
-            codeButtonStatus.text = '发送中'
+            //优化到一个函数 后还是在这个位置进行调用
+            // //修改获取验证码按钮时的状态
+            // codeButtonStatus.status = true
+            // codeButtonStatus.text = '发送中'
+            updateButtonStatus({  //优化后
+                status: true,
+                txt:'发送中'
+            })
+
 
             setTimeout(() => {
                 //延时多长时间，显示发送中
@@ -400,9 +412,14 @@ export default {
                 time--;
                 if (time === 0) {
                     clearInterval(timer.value)
-                    codeButtonStatus.status = false
-                    codeButtonStatus.text = '再次获取验证码'
-                }
+                    // 优化后
+                    updateButtonStatus({
+                        status: false,
+                        text: '再次获取验证码'
+
+                        // codeButtonStatus.status = false
+                        // codeButtonStatus.text = '再次获取验证码'
+                    }) }
                 else {
                     codeButtonStatus.text = `倒计时${time}秒`    //es6写法
                 }
@@ -412,10 +429,16 @@ export default {
          * **/
         const clearCountDown = (() => {
             //还原验证按钮默认状态，如定时器去掉
-            codeButtonStatus.status = false
-            codeButtonStatus.text = '获取验证码'
+            // codeButtonStatus.status = false
+            // codeButtonStatus.text = '获取验证码'
+            // 优化后
+            updateButtonStatus({
+                status:false,
+                txt:'获取验证码'
+             })
             //清除倒计时
             clearInterval(timer.value)
+
 
         })
 
