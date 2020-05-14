@@ -249,7 +249,7 @@ export default {
 
         })
 
-        /**获取验证码
+        /**获取验证码模块
          * **/
         const getSms = (() => {
             // 前端拦截进行提示，判断有没有输入信息
@@ -264,7 +264,7 @@ export default {
 
             }
             //获取验证码
-            let data = {
+            let requestdata = {
                 username: ruleForm.username,
                 module: model.value
                 //邮箱是否存在进行验证
@@ -279,18 +279,18 @@ export default {
                 //延时多长时间，显示发送中
 
             })
-            GetSms(data).then(response => {
+            GetSms(requestdata).then(response => {
 
                 //点击注册弹出验证码提示框
                 let data = response.data
-                root.$message({
+                root.$message({         //弹窗验证码
                     message: data.message,
                     type: 'success'
 
                 })
                 //启动登录或注册按钮
                 loginButtonStatus.value = false
-                countDown(60)
+                countDown(6)
                 //调定时器，倒计时
                 console.log(data)
             }).catch(error => {
@@ -312,7 +312,7 @@ export default {
                 // });
                 //提交表单
                 // alert("表单验证")
-                // 模拟注册成功================================================
+                // 模拟注册成功============================================================
 
                 // return false  //暂时取消下面执行测试
                 refs[formName].validate((valid) => {
@@ -348,9 +348,10 @@ export default {
             }).catch(error =>{
 
             })
+            clearCountDown()
+
 
         })
-
 
         /**注册**/
         const register = (()=>{
@@ -374,23 +375,24 @@ export default {
             }).catch(error => {
             //失败时候的代码
             })
+            clearCountDown()
+
 
             })
 
-
-        /**倒计时
+        /**倒计时===================================================
          **/
         const countDown = ((number) => {
             //判断定时器是否存在，存在则删除，否则容易出现多点后定时器乱
+            let time = number
+
+
             if(timer.value){ clearInterval(timer.value)}  //如果存在计时器先删除
 
             // 有两种倒计时，setTimeout只执行一次
             //setInterval 不断执行，需要条件才会停止
-            let time = number
             timer.value = setInterval(() => {
-                //     console.log('setTimeout')
-                // },1000)
-                // console.log(time)
+                time--;
                 if (time === 0) {
                     clearInterval(timer.value)
                     codeButtonStatus.status = false
@@ -401,10 +403,10 @@ export default {
                 }
             }, 1000)
         })
-        /**清除倒计时
+        /**清除倒计时=========================================
          * **/
         const clearCountDown = (() => {
-            //还原验证码阉牛默认状态，如定时器去掉
+            //还原验证按钮默认状态，如定时器去掉
             codeButtonStatus.status = false
             codeButtonStatus.text = '获取验证码'
             //清除倒计时
