@@ -92,14 +92,17 @@ Vue.use(VueRouter)
     },
     // component: Layout,
         //引入结构的页面
-    component: () => import("../views/User/index.vue"),
+    component: () => import("../views/Layout/index.vue"),
     children: [
         {
       path: "/userIndex",
       name: "UserIndex",
       meta: {
         name:"用户列表"
-      }},
+
+      },
+      component: () => import("../views/User/index.vue")},
+
                 {
       path: "/index",
       name: "Index",

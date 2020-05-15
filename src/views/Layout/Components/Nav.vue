@@ -8,9 +8,9 @@
                 @close="handleClose"
                 :collapse="isCollapse"
                 background-color="transparent"
-
                 text-color="#fff"
-                active-text-color="#fff">
+                active-text-color="#fff"
+                router>
 
             <template v-for="(item, index) in routers">
             <!--一级菜单 循环得到菜单名-->
@@ -20,7 +20,7 @@
                     <span>{{ item.meta.name }}</span>
                 </template>
                 <!--子级菜单在childern里面得到名字v-for如果有主菜单-->
-                <el-menu-item v-for="subItem in item.children" :key="subItem.id"   index="1-1">{{subItem.meta.name}}</el-menu-item>
+                <el-menu-item v-for="subItem in item.children" :key="subItem.id"   :index="subItem.path">{{subItem.meta.name}}</el-menu-item>   <!---index="subItem.path"做子菜单的路径-->
 
 
             </el-submenu>

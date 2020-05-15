@@ -1,5 +1,5 @@
 <template>
-    <div> InfoCategory  </div>
+    <div> InfoCategory  信息分类 </div>
 </template>
 
 <script>
