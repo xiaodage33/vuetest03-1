@@ -12,7 +12,10 @@ Vue.use(VueRouter)
 //重定向
         {
     path: '/',
-    redirect: "login"
+    redirect: "login",
+    meta:{
+      name:"主页"
+    }
   },
 
   // {
@@ -23,23 +26,45 @@ Vue.use(VueRouter)
     {
     path: '/login',
     name: 'Login',
+    hidden: true,
+    meta:{
+      name: "登录"
+    },
     component: () => import("../views/Login/login.vue")
   },
 
     //后台路由控制台
     {
-    path: '/console',
-    name: 'Console',
+    path: '/info',
+    name: 'Info',
+    redirect: "index",
+    meta:{
+      name:"信息管理"
+    },
+
         //引入结构的页面
     component: () => import("../views/Layout/index.vue"),
     children:[
     {
-      path: "/console",
-      name: "Console",
-      component:()=>import("../views/Console/index.vue")
+      path: "/index",
+      name: "Index",
+      hidden: false,
+      meta: {
+        name:"信息列表"
+      },
 
+      component:()=>import("../views/Console/index.vue"),
+    },
+      {
+        path: "/index",
+        name: "Index",
+        meta:{
+          name: "信息分类"
+        },
+        component:()=>import("../views/Console/index.vue"),
+      },
 
-    }]
+       ]
   },
 
 

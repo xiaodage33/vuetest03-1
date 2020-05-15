@@ -1,14 +1,75 @@
 <template>
     <div id="nav-wrap">
-    菜单Nav
+
+        <el-menu
+                default-active="2"
+                class="el-menu-vertical-demo"
+                @open="handleOpen"
+                @close="handleClose"
+                :collapse="isCollapse"
+                background-color="transparent"
+
+                text-color="#fff"
+                active-text-color="#fff">
+
+            <template v-for="(item, index) in routers">
+            <!--一级菜单 循环得到菜单名-->
+            <el-submenu  v-if="!item.hidden" :key="item.id" :index="index">
+                <template slot="title">
+                    <i class="el-icon-location"></i>
+                    <span>{{ item.meta.name }}</span>
+                </template>
+                <!--子级菜单在childern里面得到名字v-for如果有主菜单-->
+                <el-menu-item v-for="subItem in item.children" :key="subItem.id"   index="1-1">{{subItem.meta.name}}</el-menu-item>
+
+
+            </el-submenu>
+            </template>
+        </el-menu>
+
+
     </div>
 
 </template>
 
 <script>
+import { reactive, ref,isRef,toRefs,onMounted} from '@vue/composition-api';
     export default {
-        name: "Nav"
+        name: "Nav",
+
+    setup(props,{ root }){
+        //data数据
+        const isCollapse = ref(false);  //控制菜单栏是否展开
+        const routers = reactive(root.$router.options.routes); //取到地址赋值，因为是对象
+        // console.log(root.$router)
+
+
+        //函数
+        const handleOpen = (key,keyPath) =>{
+            console.log(key,keyPath);
+        }
+        const handleCose=(key,keyPath)=>{
+            console.log(key,keyPath)
+        }
+        const handleClose = (key,keyPath)=>{
+            console.log(key,keyPath);
+        }
+
+        return{
+            isCollapse,
+            handleOpen,
+            handleClose,
+            routers
+
+        }
+
+
+
     }
+    }
+
+
+
 </script>
 
 <style lang="scss" scoped>
@@ -20,6 +81,7 @@
         width: $navMenu;
         height:100vh;
         background-color: #344a5f;
+
 
     }
 
