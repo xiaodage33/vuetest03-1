@@ -1,6 +1,6 @@
 <template>
     <div id="header-wrap">
-        头部
+        头部header
 
 
     </div>
@@ -14,7 +14,7 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
    #header-wrap{
        postition: fixed;
        top:0;

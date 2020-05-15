@@ -1,6 +1,6 @@
 <template>
     <div id="main-wrap">
-    <router-view />   //路由的子菜单
+    <router-view />  <br> 这段：main文件路由的子菜单
     </div>
 </template>
 
@@ -10,7 +10,7 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 #main-wrap{
     position: fixed;
     left: 250px;

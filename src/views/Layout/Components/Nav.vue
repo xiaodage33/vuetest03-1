@@ -1,6 +1,6 @@
 <template>
     <div id="nav-wrap">
-    菜单
+    菜单Nav
     </div>
 
 </template>
