@@ -34,38 +34,86 @@ Vue.use(VueRouter)
   },
 
     //后台路由控制台
-    {
-    path: '/info',
-    name: 'Info',
-    redirect: "index",
-    meta:{
-      name:"信息管理"
-    },
+      {
+          path: '/console',
+          name: 'Console',
+          redirect: "index",
+          meta: {
+              name: "控制台"
+          },
+          // component: Layout,
+          //引入结构的页面
+          component: () => import("../views/Layout/index.vue"),
+          children: [
+              {
+                  path: "/index",
+                  name: "Index",
+                  hidden: false,
+                  meta: {
+                      name: "首页"
+                  },
 
+                  component: () => import("../views/Console/index.vue"),
+
+              },
+              {
+                  path: "/info",
+                  name: "Info",
+                  meta: {
+                      name: "信息管理"
+                  },
+                  component: () => import("../views/Layout/index.vue"),
+              },
+              {
+                  path: "/infoIndex",
+                  name: "InfoIndex",
+                  meta: {
+                      name: "信息列表"
+                  },
+                  component: () => import("../views/Info/index.vue"),
+              },
+           {
+                  path: "/infoCategory",
+                  name: "InfoCategory",
+                  meta: {
+                      name: "信息分类"
+                  },
+                  component: () => import("../views/Info/category.vue"),
+              }]
+      },
+
+/**=======用户管理管理**/
+{
+    path: '/user',
+    name: 'User',
+    // redirect: "index",
+    meta:{
+      name:"用户管理"
+    },
+    // component: Layout,
         //引入结构的页面
-    component: () => import("../views/Layout/index.vue"),
-    children:[
-    {
+    component: () => import("../views/User/index.vue"),
+    children: [
+        {
+      path: "/userIndex",
+      name: "UserIndex",
+      meta: {
+        name:"用户列表"
+      }},
+                {
       path: "/index",
       name: "Index",
-      hidden: false,
       meta: {
-        name:"信息列表"
-      },
+        name:"haha"
+      }}
 
-      component:()=>import("../views/Console/index.vue"),
-    },
-      {
-        path: "/index",
-        name: "Index",
-        meta:{
-          name: "信息分类"
-        },
-        component:()=>import("../views/Console/index.vue"),
-      },
+    ]
+}
 
-       ]
-  },
+
+
+
+
 
 
   // {

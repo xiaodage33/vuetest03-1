@@ -1,4 +1,5 @@
 <template>
+    <!-- 导入下面结构-->
    <div id="layout">
        <LayoutHeader />
        <LayoutMain />
