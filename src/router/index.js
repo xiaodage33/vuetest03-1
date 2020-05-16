@@ -6,6 +6,8 @@ import Home from '../views/Home.vue'
 
 
 Vue.use(VueRouter)
+//引入布局组件
+import Layout from '@/views/Layout/index.vue'
 
   const routes = [
 
@@ -16,7 +18,6 @@ Vue.use(VueRouter)
     meta:{
       name:"主页",
       icon:"el-icon-s-home"
-
     }
   },
 
@@ -44,9 +45,9 @@ Vue.use(VueRouter)
               name: "控制台",
               icon:"el-icon-watermelon"
           },
-          // component: Layout,
+          component: Layout,
           //引入结构的页面
-          component: () => import("../views/Layout/index.vue"),
+          // component: () => import("../views/Layout/index.vue"),
           children: [
               {
                   path: "/index",
@@ -96,9 +97,9 @@ Vue.use(VueRouter)
       name:"用户管理",
       icon:'el-icon-user',
     },
-    // component: Layout,
+    component: Layout,
         //引入结构的页面
-    component: () => import("../views/Layout/index.vue"),
+    // component: () => import("../views/Layout/index.vue"),
     children: [
         {
       path: "/userIndex",

@@ -14,7 +14,7 @@
 
             <template v-for="(item, index) in routers">
             <!--一级菜单 循环得到菜单名-->
-            <el-submenu  v-if="!item.hidden" :key="item.id" :index="index">
+            <el-submenu  v-if="!item.hidden" :key="item.id" :index="index+''">
                 <template slot="title">
                     <i :class="item.meta.icon"></i>  <!--:class="item.meta.icon" 图标在一级菜单显示-->
                     <span>{{ item.meta.name }}</span>
