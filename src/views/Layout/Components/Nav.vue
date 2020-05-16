@@ -16,11 +16,11 @@
             <!--一级菜单 循环得到菜单名-->
             <el-submenu  v-if="!item.hidden" :key="item.id" :index="index">
                 <template slot="title">
-                    <i class="el-icon-location"></i>
+                    <i :class="item.meta.icon"></i>  <!--:class="item.meta.icon" 图标在一级菜单显示-->
                     <span>{{ item.meta.name }}</span>
                 </template>
-                <!--子级菜单在childern里面得到名字v-for如果有主菜单-->
-                <el-menu-item v-for="subItem in item.children" :key="subItem.id"   :index="subItem.path">{{subItem.meta.name}}</el-menu-item>   <!---index="subItem.path"做子菜单的路径-->
+                <!--子级菜单在childern里面得到名字v-for如果有主菜单，二级菜单也配置图标后有显示-->
+                <el-menu-item v-for="subItem in item.children" :key="subItem.id"   :index="subItem.path" :class="item.meta.icon">{{subItem.meta.name}}</el-menu-item>   <!---index="subItem.path"做子菜单的路径-->
 
 
             </el-submenu>

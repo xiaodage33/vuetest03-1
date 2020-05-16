@@ -14,7 +14,9 @@ Vue.use(VueRouter)
     path: '/',
     redirect: "login",
     meta:{
-      name:"主页"
+      name:"主页",
+      icon:"el-icon-s-home"
+
     }
   },
 
@@ -39,7 +41,8 @@ Vue.use(VueRouter)
           name: 'Console',
           redirect: "index",
           meta: {
-              name: "控制台"
+              name: "控制台",
+              icon:"el-icon-watermelon"
           },
           // component: Layout,
           //引入结构的页面
@@ -50,7 +53,8 @@ Vue.use(VueRouter)
                   name: "Index",
                   hidden: false,
                   meta: {
-                      name: "首页"
+                      name: "首页",
+                      icon:"el-icon-s-home"
                   },
 
                   component: () => import("../views/Console/index.vue"),
@@ -76,7 +80,8 @@ Vue.use(VueRouter)
                   path: "/infoCategory",
                   name: "InfoCategory",
                   meta: {
-                      name: "信息分类"
+                      name: "信息分类",
+                      icon:'el-icon-watermelon'
                   },
                   component: () => import("../views/Info/category.vue"),
               }]
@@ -88,7 +93,8 @@ Vue.use(VueRouter)
     name: 'User',
     // redirect: "index",
     meta:{
-      name:"用户管理"
+      name:"用户管理",
+      icon:'el-icon-user',
     },
     // component: Layout,
         //引入结构的页面
