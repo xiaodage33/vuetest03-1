@@ -38,7 +38,7 @@ import { reactive, ref,isRef,toRefs,onMounted} from '@vue/composition-api';
         name: "Nav",
 
     setup(props,{ root }){
-        //data数据
+        //data数据  //打印路由
         const isCollapse = ref(false);  //控制菜单栏是否展开
         const routers = reactive(root.$router.options.routes); //取到地址赋值，因为是对象
         // console.log(root.$router)
