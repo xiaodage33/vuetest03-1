@@ -27,7 +27,7 @@
             </template>
         </el-menu>
 
-    <svg-icon />
+    <svg-icon iconClass="menu" className="menu12"  />
     </div>
 
 </template>
