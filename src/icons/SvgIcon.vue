@@ -43,15 +43,26 @@
 
            // computed监听属性变化，并计算属性
             //计算总和  ，computed 在监听着count的变化
-            const plusOne = computed(()=> {
-                return count.value +1
-
+            // const plusOne = computed(()=> {
+            //     return count.value +1
+            //
+            // })
+            // console.log(count)
+            //
+            // const aabb = ()=>{
+            //     count.value =20
+            // }
+            //使用computed里面的get和 set方法
+            const number = ref(5)
+            const plusOne = computed({
+                get: () =>number.value+1,
+                set: val => {number.value =val -1}
             })
-            console.log(count)
-
             const aabb = ()=>{
-                count.value =20
+                number.value =20
             }
+
+
 
             return{
                 msg,
