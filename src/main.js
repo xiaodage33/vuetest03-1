@@ -10,6 +10,19 @@ import store from './store';
 
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+
+/**自定义全局组件名称**/
+Vue.component('svg-icon',{
+  template:"<div> {{msg}} </div>",
+  data(){
+    return{
+      msg:"haha来了把"
+    }
+
+  }
+})
+
+
 Vue.use(ElementUI);
 Vue.use(VueCompositionApi);
 

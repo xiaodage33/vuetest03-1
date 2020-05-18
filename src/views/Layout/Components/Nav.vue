@@ -27,7 +27,7 @@
             </template>
         </el-menu>
 
-
+    <svg-icon />
     </div>
 
 </template>
