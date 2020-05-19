@@ -1,6 +1,6 @@
 <template>
     <!-- 导入下面结构-->
-   <div id="layout">
+   <div id="layout" :class="[menuStatus ? 'close' : 'open']">
        <LayoutHeader />
        <LayoutMain />
            <LayoutNav />
@@ -8,19 +8,28 @@
 </template>
 
 <script>
+import { computed} from '@vue/composition-api';
+
     //组件、引入结构导航菜单，内容，和头
 import LayoutHeader from './Components/Header'
 import LayoutMain from './Components/Main'
 import LayoutNav from './Components/Nav'
 
 export default {
+
     name: 'layout',
 
     components:{LayoutHeader,LayoutMain,LayoutNav},
-    setup(){
+    setup(props,{root}){
+        const menuStatus = computed(()=>
+            root.$store.state.isCollapse);
 
+
+        return {
+            menuStatus
         }
-    }
+        }}
+
 </script>
 
 <style scoped>
