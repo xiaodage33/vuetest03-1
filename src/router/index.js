@@ -43,7 +43,7 @@ import Layout from '@/views/Layout/index.vue'
           redirect: "index",
           meta: {
               name: "控制台",
-              icon:"menu"
+              icon:"el-icon-set-up"
           },
           component: Layout,
           //引入结构的页面
@@ -95,7 +95,7 @@ import Layout from '@/views/Layout/index.vue'
     // redirect: "index",
     meta:{
       name:"用户管理",
-      icon:'console',
+      icon:'el-icon-watermelon',
     },
     component: Layout,
         //引入结构的页面
