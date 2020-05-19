@@ -75,7 +75,7 @@ import Layout from '@/views/Layout/index.vue'
                   meta: {
                       name: "信息列表"
                   },
-                  component: () => import("../views/Info/index.vue"),
+                  component: () => import("../views/Info/category.vue"),
               },
            {
                   path: "/infoCategory",

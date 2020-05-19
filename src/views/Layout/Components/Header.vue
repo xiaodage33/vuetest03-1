@@ -3,23 +3,35 @@
 
             <div class="pull-left"> </div>
 
-        <div class="pull-right header-icon" >
-        <div  class="user-info pull-right">
-              <svg-icon iconClass="fish" className="fish" class="pull-left"  /> 管理员
+        <div class="pull-right header-icon"  >
 
-
+            管理员
 
               <svg-icon iconClass="quit" className="quit" /> </div>
+
+
+    <div  class="user-info pull-right"  @click="navMenuState" >
+
+
+            <svg-icon iconClass="fish" className="fish" class="pull-left" />
         </div>
-
     </div>
-
 </template>
 
 <script>
     export default {
         // name: "header"
-        name: "layoutHeader"
+        name: "layoutHeader",
+        setup(props,{root}){
+            const navMenuState =()=>{
+                root.$store.commit('SET_COLLAPSE')
+
+            }
+            return{
+                navMenuState
+            }
+        }
+
     }
 </script>
 

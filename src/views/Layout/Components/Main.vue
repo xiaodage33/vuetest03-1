@@ -1,8 +1,7 @@
 <template>
     <div id="main-wrap">
         <div class="main-content">
-            <div class="content"> dddd
-                    <router-view />
+            <div class="content"> <router-view />
             </div>
         </div>
 
