@@ -1,6 +1,6 @@
 <template>
     <div id="nav-wrap">
-
+        <h1 class="logo"> <img src="../../../assets/logo.png" alt="">   </h1>
         <el-menu
                 default-active="2"
                 class="el-menu-vertical-demo"
@@ -74,6 +74,11 @@ import { reactive, ref,isRef,toRefs,onMounted} from '@vue/composition-api';
 
 <style lang="scss" scoped>
     @import "../../../styles/config.scss";
+    .logo{
+        text-align: center;
+        img{ width:92px;}
+    }
+
     #nav-wrap{
         position: fixed;
         top: 0;

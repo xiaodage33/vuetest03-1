@@ -1,16 +1,16 @@
 <template>
     <div id="header-wrap"> 这里有个图标
-    <div class="pull-left header-icon" ><svg-icon icon-Class="menu" class-name="menu"   />
 
-        <div class="pull-right" header-icon>
-            <div class="user-info">
+            <div class="pull-left"> </div>
 
-            </div>
-            <div><svg-icon iconClass="console" className="console" /> </div>
+        <div class="pull-right header-icon" >
+        <div  class="user-info pull-right">
+              <svg-icon iconClass="fish" className="fish" class="pull-left"  /> 管理员
+
+
+
+              <svg-icon iconClass="quit" className="quit" /> </div>
         </div>
-
-    </div>
-
 
     </div>
 
@@ -37,11 +37,19 @@
 .header-icon{
     padding: 0 32px;
     svg{
-        margin-bottom: -8px;
-        font-size:25px;
+        margin-bottom: -10px;
+        font-size:15px;
         cursor: pointer;
     }
 }
+.user-info {
+    height: 100%;
+    padding: 0 32px;
+    border-right: 1px solid #ededed;
+    + .header-icon {
+        padding: 0 28px;
+    }
+    }
 
 
 </style>

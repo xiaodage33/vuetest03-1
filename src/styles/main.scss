@@ -4,6 +4,9 @@
 
 @import "./elementui";
 
-.pull-left{float: left;}
+.pull-left{
+  float: left;
+  width: 8em;
+}
 
 .pull-right{float:right;}
