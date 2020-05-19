@@ -20,14 +20,14 @@
                     <span>{{ item.meta.name }}</span>
                 </template>
                 <!--子级菜单在childern里面得到名字v-for如果有主菜单，二级菜单也配置图标后有显示-->
-                <el-menu-item v-for="subItem in item.children" :key="subItem.id"   :index="subItem.path" :class="item.meta.icon">{{subItem.meta.name}}</el-menu-item>   <!---index="subItem.path"做子菜单的路径-->
+                <el-menu-item v-for="subItem in item.children" :key="subItem.id"   :index="subItem.path" >{{subItem.meta.name}}</el-menu-item>   <!---index="subItem.path"做子菜单的路径  ;;  :class="item.meta.icon"-->
 
 
             </el-submenu>
             </template>
         </el-menu>
 
-    <svg-icon iconClass="menu" className="menu12"  />
+    <!--<svg-icon :iconClass="item.meta.name" :className="item.meta.name "  />-->
     </div>
 
 </template>
@@ -35,33 +35,33 @@
 <script>
 import { reactive, ref,isRef,toRefs,onMounted} from '@vue/composition-api';
     export default {
-        name: "Nav",
+        name: "NavMenu",
 
-    setup(props,{ root }){
-        //data数据  //打印路由
-        const isCollapse = ref(false);  //控制菜单栏是否展开
-        const routers = reactive(root.$router.options.routes); //取到地址赋值，因为是对象
-        // console.log(root.$router)
+        setup(props, {root}) {
+            //data数据  //打印路由
+            const isCollapse = ref(false);  //控制菜单栏是否展开
+            const routers = reactive(root.$router.options.routes); //取到地址赋值，因为是对象
+            // console.log(root.$router)
 
 
-        //函数
-        const handleOpen = (key,keyPath) =>{
-            console.log(key,keyPath);
-        }
-        const handleCose=(key,keyPath)=>{
-            console.log(key,keyPath)
-        }
-        const handleClose = (key,keyPath)=>{
-            console.log(key,keyPath);
-        }
+            //函数
+            const handleOpen = (key, keyPath) => {
+                console.log(key, keyPath);
+            }
+            const handleCose = (key, keyPath) => {
+                console.log(key, keyPath)
+            }
+            const handleClose = (key, keyPath) => {
+                console.log(key, keyPath);
+            }
 
-        return{
-            isCollapse,
-            handleOpen,
-            handleClose,
-            routers
+            return {
+                isCollapse,
+                handleOpen,
+                handleClose,
+                routers
 
-        }
+            }
 
 
 

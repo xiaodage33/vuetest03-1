@@ -1,9 +1,4 @@
 
-import Vue from "vue";
-
-import SvuIcon from "./SvgIcon";
-Vue.component('svg-icon',SvuIcon)
-
 
 /**
  * require.context:读取指定目录的所有文件
@@ -13,7 +8,13 @@ Vue.component('svg-icon',SvuIcon)
  *
  * **/
 //es6写法
-const req = require.context('./svg',false,/\..svg$/) //正则里面表示结尾，读取结尾为。svg的文件
+
+import Vue from "vue";
+import SvuIcon from "./SvgIcon";
+Vue.component("svg-icon", SvuIcon);
+
+
+const req = require.context('./svg',false,/\.svg$/); //正则里面表示结尾，读取结尾为。svg的文件
 const requireAll = (requireContext) =>{
     console.log(requireContext.keys().map(requireContext))
 

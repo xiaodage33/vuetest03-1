@@ -1,82 +1,48 @@
 <template>
-    <!--<svg :class="svgClass" aria-hidden="true">-->
-        <!--<use :xlink:href="name"> </use>-->
-
-    <!--</svg>-->
-
-   <div> <div style="color:red;"> {{ plusOne }}  ==== {{msg}}
-
-       <el-button @click="aabb"> 按钮</el-button>
-
-   </div>
-
-    <!--<div>{{ msg }} </div>-->
-   </div>
+    <svg :class="svgClass" aria-hidden="true">
+        <use :xlink:href="iconName"></use>
+    </svg>
 </template>
-
 <script>
-     import axios from 'axios';
-
-    import {reactive,ref,isRef,toRefs,onMounted,computed} from '@vue/composition-api';
-    export default {
-        name:"svgIcon",
-        // props:['iconClass','className'],
-        props:{
-            //分页
-            /**通过一个属性传值，父主键传值给子主键
-             * **/
-          iconClass:{
-              type: String, //定义接收的值类型 Boolean
-              default: '' //默认值，如果没有设置则默认
-              // required: true  //传值必填项，
-          },
-          className:{
-              type: String,
-              defatult: ''
-          }
+import { ref, computed, onMounted } from '@vue/composition-api';
+export default {
+    name: "svgIcon",
+    // props: ['iconClass', 'className'],
+    props: {
+        // 分页
+        iconClass: {
+            type: String,  // 定义接收的值类型
+            default: ''
         },
-        setup(props){
-            console.log(props.iconClass)
-            console.log(props.className)
-            const msg=ref("sjhaha");
-            const count = ref(10);
-
-           // computed监听属性变化，并计算属性
-            //计算总和  ，computed 在监听着count的变化
-            // const plusOne = computed(()=> {
-            //     return count.value +1
-            //
-            // })
-            // console.log(count)
-            //
-            // const aabb = ()=>{
-            //     count.value =20
-            // }
-            //使用computed里面的get和 set方法
-            const number = ref(5)
-            const plusOne = computed({
-                get: () =>number.value+1,
-                set: val => {number.value =val -1}
-            })
-            const aabb = ()=>{
-                number.value =20
+        className : {
+            type: String,
+            default: ''
+        }
+    },
+    setup(props){
+        const msg = ref("手把手撸码的说法的前端");
+        const number = ref(1);
+        // 计算属性，得出最终结果，并返回
+        const iconName = computed(() => `#icon-${props.iconClass}`)
+        const svgClass = computed(() => {
+            if(props.className) {
+                return `svg-icon ${props.className}`
+            }else{
+                return `svg-icon`
             }
-
-
-
-            return{
-                msg,
-                plusOne,
-                aabb,
-            }
-
+        })
+        return {
+            msg,
+            iconName,
+            svgClass
         }
     }
-
+}
 </script>
-
-<style  lang="scss" scoped>
-
+<style lang="scss" scoped>
+.svg-icon {
+    width: 100em;
+    height: 100em;
+    fill: currentColor;
+}
 </style>
-
-

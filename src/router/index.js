@@ -43,7 +43,7 @@ import Layout from '@/views/Layout/index.vue'
           redirect: "index",
           meta: {
               name: "控制台",
-              icon:"el-icon-watermelon"
+              icon:"el-icon-set-up"
           },
           component: Layout,
           //引入结构的页面

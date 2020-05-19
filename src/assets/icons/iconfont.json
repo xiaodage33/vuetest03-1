@@ -1,0 +1,30 @@
+{
+  "id": "1825746",
+  "name": "vue3",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "12302221",
+      "name": "春节-鱼",
+      "font_class": "chunjie-yu",
+      "unicode": "e9b4",
+      "unicode_decimal": 59828
+    },
+    {
+      "icon_id": "12302222",
+      "name": "春节-扇子",
+      "font_class": "chunjie-shanzi",
+      "unicode": "e9b5",
+      "unicode_decimal": 59829
+    },
+    {
+      "icon_id": "1983817",
+      "name": "仪表盘",
+      "font_class": "yibiaopan",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    }
+  ]
+}
