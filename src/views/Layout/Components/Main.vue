@@ -41,7 +41,18 @@
     padding-right: 30px;
     /*-webkit-box-sizing: border-box;*/
     /*box-sizing: border-box;*/
+    @include webkit(box-sizing,border-box);
+    @include webkit(transition,all .3s ease 0s);
+      /*@include引入*/
 }
+
+.open{
+    .main-content {padding-left: $navMenu+30;}
+}
+.close{
+    .main-content{ padding-left: $navMenu + 30;}
+}
+
 
 .content{
     width: 100%;
@@ -50,6 +61,8 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     background-color: #fff;
+    @include webkit(box-sizing,border-box);
+
 }
 
 </style>

@@ -13,7 +13,7 @@
     <div  class="user-info pull-right"  @click="navMenuState" >
 
 
-            <svg-icon iconClass="fish" className="fish" class="pull-left" />
+            <svg-icon iconClass="caidan" className="caidan" class="pull-left" />
         </div>
     </div>
 </template>

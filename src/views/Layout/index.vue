@@ -21,6 +21,7 @@ export default {
 
     components:{LayoutHeader,LayoutMain,LayoutNav},
     setup(props,{root}){
+        //配置点击隐藏
         const menuStatus = computed(()=>
             root.$store.state.isCollapse);
 
