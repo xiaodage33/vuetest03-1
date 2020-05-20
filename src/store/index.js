@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import Cookie from "cookie_js"
 
 Vue.use(Vuex)
 
@@ -10,9 +11,9 @@ export default new Vuex.Store({
       //优先到浏览器取值，没有则是false
     // isCollapse: JSON.parse(sessionStorage.getItem('isCollapse')) || false
 //取本地存储
-      isCollapse: localStorage.getItem('isCollapse') || false
-
-
+//       isCollapse: localStorage.getItem('isCollapse') || false
+        //cookie取值
+      isCollapse: JSON.parse(Cookie.get('isCollapse')) || false
   },
   getters:{   //computed
     count: state => state.count +10
@@ -32,9 +33,12 @@ export default new Vuex.Store({
     SET_COLLAPSE(state){
           state.isCollapse = !state.isCollapse
           // html5本地存储
-          sessionStorage.setItem('isCollapse',JSON.stringify(state.isCollapse))
+          // sessionStorage.setItem('isCollapse',JSON.stringify(state.isCollapse))
         //存储到本地除非删除本地cookie
         //   localStorage.setItem('isCollapse',JSON.stringify(state.isCollapse))
+
+        //使用Cookie存取
+        Cookie.set('isCollapse',JSON.stringify(state.isCollapse))
         }
 
 

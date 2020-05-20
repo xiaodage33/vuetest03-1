@@ -10,8 +10,29 @@
 </template>
 
 <script>
+    import {reactive, ref,isRef,onMounted,computed} from '@vue/composition-api';
+
     export default {
-        // name: "Main"
+        name: "LayoutMain",
+        setup(){
+                // const str = ref('{"name":"haha1","title":"xianglong"}');
+                // console.log(str.value);
+                // //字符串转对象
+                // const json = reactive(JSON.parse(str.value));
+                //
+                // console.log(json);
+                // console.log(json.name)
+
+                const json = reactive({
+                    "name":"哈哈",
+                    "title":"abc"
+                })
+                // console.log(json)
+                //对象转json ，互转
+                const toString = ref(JSON.stringify(json))
+                console.log(toString.value)
+
+              }
     }
 </script>
 

@@ -69,7 +69,7 @@ import { reactive, ref,isRef,toRefs,onMounted,computed} from '@vue/composition-a
             // console.log(root.$store.state.count)
             // console.log(root.$store.getters.count)
 
-            root.$store.commit('SET_COUNT',100)
+            // root.$store.commit('SET_COUNT',100)
 
             return {
                 isCollapse,
@@ -92,7 +92,12 @@ import { reactive, ref,isRef,toRefs,onMounted,computed} from '@vue/composition-a
     @import "../../../styles/config.scss";
     .logo{
         text-align: center;
-        img{ width:92px;}
+        img{
+            margin: 28px auto 25px;
+            width:92px;
+            @include  webkit(transitions,all .3s ease 0s);
+
+        }
     }
 
     #nav-wrap{
@@ -104,12 +109,13 @@ import { reactive, ref,isRef,toRefs,onMounted,computed} from '@vue/composition-a
         background-color: #344a5f;
         @include webkit(transition,all .3s ease 0s);
         /*@include引入*/
+        svg{
+            font-size: 20px;
+            margin-right: 10px;
+        }
     }
 .open{
     #nav-wrap{width: $navMenu;}
-}
-.close{
-    #nav-wrap{ width:64px;}
 }
 
 
