@@ -20,16 +20,14 @@
         setup(props,{root}){
             const bbbb = root.$store.state.login.aaaa
 
-            const json = reactive({
-                    "name":"哈哈",
-                    "title":"abc"
-                })
-
-
-                // console.log(json)
-                //对象转json ，互转
-            const toString = ref(JSON.stringify(json))
-            console.log(toString.value)
+            // const json = reactive({
+            //         "name":"哈哈",
+            //         "title":"abc"
+            //     })
+            //     // console.log(json)
+            //     //对象转json ，互转
+            // const toString = ref(JSON.stringify(json))
+            // console.log(toString.value)
 
             return{
                 bbbb
@@ -61,21 +59,14 @@
 .main-content{
     width: 100%;
     height: 100%;
-    padding-top: $layoutHeader+30;
-    padding-left: $navMenu + 30;
+    padding-top: $layoutHeader;
+    padding-left: 30px;
     padding-right: 30px;
     /*-webkit-box-sizing: border-box;*/
     /*box-sizing: border-box;*/
     @include webkit(box-sizing,border-box);
     @include webkit(transition,all .3s ease 0s);
       /*@include引入*/
-}
-
-.open{
-    .main-content {padding-left: $navMenu+30;}
-}
-.close{
-    .main-content{ padding-left: $navMenu + 30;}
 }
 
 

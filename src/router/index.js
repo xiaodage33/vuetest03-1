@@ -67,7 +67,7 @@ import Layout from '@/views/Layout/index.vue'
                   meta: {
                       name: "信息管理"
                   },
-                  component: () => import("../views/Layout/index.vue"),
+                  component: () => import("../views/Info/guanli.vue"),
               },
               {
                   path: "/infoIndex",
@@ -84,7 +84,7 @@ import Layout from '@/views/Layout/index.vue'
                       name: "信息分类",
                       icon:'el-icon-watermelon'
                   },
-                  component: () => import("../views/Info/category.vue"),
+                  component: () => import("../views/Info/index.vue"),
               }]
       },
 

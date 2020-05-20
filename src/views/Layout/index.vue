@@ -1,9 +1,11 @@
 <template>
     <!-- 导入下面结构-->
    <div id="layout" :class="[menuStatus ? 'close' : 'open']">
-       <LayoutHeader />
-       <LayoutMain />
-           <LayoutNav />
+       <LayoutNav />
+       <div class="content">
+           <LayoutHeader />
+           <LayoutMain />
+       </div>
    </div>
 </template>
 
@@ -35,8 +37,11 @@ export default {
 
 <style scoped>
 #layout{
+    display: flex;
     background-color: #f7f7f7 ;
 }
-
+.content {
+    flex: 1;
+}
 
 </style>

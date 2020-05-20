@@ -46,7 +46,7 @@ import { reactive, ref,isRef,toRefs,onMounted,computed} from '@vue/composition-a
             /**computed 监听**/
             const isCollapse = computed(()=> {
                 // console.log(root.$store.state.isCollapse)
-                return root.$store.state.isCollapse
+                return root.$store.state.app.isCollapse
             });
 
 
@@ -101,9 +101,6 @@ import { reactive, ref,isRef,toRefs,onMounted,computed} from '@vue/composition-a
     }
 
     #nav-wrap{
-        position: fixed;
-        top: 0;
-        left:0;
         width: $navMenu;
         height:100vh;
         background-color: #344a5f;
