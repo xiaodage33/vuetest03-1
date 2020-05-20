@@ -26,6 +26,8 @@
             const navMenuState =()=>{
                 root.$store.commit('SET_COLLAPSE')
 
+                // root.$store.dispatch('setMenuStatus',{"name":"aaaa"})
+
             }
             return{
                 navMenuState

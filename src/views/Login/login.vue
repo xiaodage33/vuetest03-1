@@ -359,24 +359,36 @@ export default {
                 password : sha1(ruleForm.password),
                 code: ruleForm.code
             }
-            Login(requestData).then(response =>{
-                console.log('登录成功')
-                console.log(response)
+            root.$store.dispatch('login',requestData).then(response => {
 
-            //====路由跳转=======================
-             root.$router.push({
-                 //页面跳转
-                 name:'Console'
+                    console.log('登录成功')
+                    console.log(response)
+                    root.$router.push({
+                        //页面跳转
+                        name: 'Console'
+                    })
+                }).catch(error => {
 
-             })
+                });
+                // Login(requestData).then(response =>{
+                //     console.log('登录成功')
+                //     console.log(response)
 
-            }).catch(error =>{
-
+                //====路由跳转=======================
+                //      root.$router.push({
+                //          //页面跳转
+                //          name:'Console'
+                //
+                //      })
+                //
+                //     }).catch(error =>{
+                //
+                //     })
+                //     clearCountDown() //清除验证码发送状态
+                //
+                //
             })
-            clearCountDown() //清除验证码发送状态
 
-
-        })
 
         /**注册**/
         const register = (()=>{
@@ -399,7 +411,7 @@ export default {
 
             }).catch(error => {
             //失败时候的代码
-            })
+            });
 
 
             })
