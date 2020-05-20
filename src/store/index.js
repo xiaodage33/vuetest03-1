@@ -3,8 +3,8 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-import app from "./app.js";
-import login from "./login.js";
+import app from "./modules/app";
+import login from "./modules/login";
 
 export default new Vuex.Store({
     modules:{

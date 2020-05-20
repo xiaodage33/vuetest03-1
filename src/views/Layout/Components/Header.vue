@@ -18,7 +18,8 @@
         name: "layoutHeader",
         setup(props, {root}) {
             const navMenuState = () => {
-                root.$store.commit('SET_COLLAPSE')
+                //app使用了命名空间
+                root.$store.commit('app/SET_COLLAPSE')
 
                 // root.$store.dispatch('setMenuStatus',{"name":"aaaa"})
 

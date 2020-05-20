@@ -2,7 +2,6 @@
     <div id="main-wrap">
         <div class="main-content">
             <div class="content"> <router-view />
-           {{ bbbb }}
 
 
             </div>
@@ -18,7 +17,7 @@
     export default {
         name: "LayoutMain",
         setup(props,{root}){
-            const bbbb = root.$store.state.login.aaaa
+            // const bbbb = root.$store.state.login.aaaa
 
             // const json = reactive({
             //         "name":"哈哈",
@@ -30,7 +29,7 @@
             // console.log(toString.value)
 
             return{
-                bbbb
+
              }
 
               }
