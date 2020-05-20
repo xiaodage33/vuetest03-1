@@ -2,6 +2,9 @@
     <div id="main-wrap">
         <div class="main-content">
             <div class="content"> <router-view />
+           {{ bbbb }}
+
+
             </div>
         </div>
 
@@ -14,26 +17,27 @@
 
     export default {
         name: "LayoutMain",
-        setup(){
-                // const str = ref('{"name":"haha1","title":"xianglong"}');
-                // console.log(str.value);
-                // //字符串转对象
-                // const json = reactive(JSON.parse(str.value));
-                //
-                // console.log(json);
-                // console.log(json.name)
+        setup(props,{root}){
+            const bbbb = root.$store.state.login.aaaa
 
-                const json = reactive({
+            const json = reactive({
                     "name":"哈哈",
                     "title":"abc"
                 })
+
+
                 // console.log(json)
                 //对象转json ，互转
-                const toString = ref(JSON.stringify(json))
-                console.log(toString.value)
+            const toString = ref(JSON.stringify(json))
+            console.log(toString.value)
+
+            return{
+                bbbb
+             }
 
               }
-    }
+        }
+
 </script>
 
 <style lang="scss" scoped>

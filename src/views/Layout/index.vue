@@ -23,7 +23,7 @@ export default {
     setup(props,{root}){
         //配置点击隐藏
         const menuStatus = computed(()=>
-            root.$store.state.isCollapse);
+            root.$store.state.app.isCollapse);
 
 
         return {
