@@ -1,31 +1,16 @@
-//后台框架尺寸
-//菜单宽度
-$navMenu :250px;
-
-//主色调是#f56c6c
-$mainColor: #f56c6c;
-
-
-
-
 // 后台框架尺寸
 // 菜单宽度
-$navMenuMin: 92px;
-$layoutHeader: 25px;
+$navMenu: 250px;
+$navMenuMin: 64px;
+$layoutHeader: 75px;
 
+// 主颜色
+$mainCcolor: #f56c6c;
 
-//动画封装一个方法
-@mixin webkit($type,$value){
-        //-webkit-transitions: all .3s ease 0s;
-        //-moz-transition: all .3s ease 0s;
-        //-o-transition: all .3s ease 0s;
-        //-ms-transition: all .3s ease 0s;
-        //transition: all .3s ease 0s;
-        -webkit-#{$type}: $value;
-        -moz-#{$type}: $value;
-        -o-#{$type}: $value;
-        -ms-#{$type}: $value;
-        #{$type}: $value;
-
-
+@mixin webkit($type, $value){
+  -webkit-#{$type}: $value;
+  -moz-#{$type}: $value;
+  -o-#{$type}: $value;
+  -ms-#{$type}: $value;
+  #{$type}: $value;
 }
