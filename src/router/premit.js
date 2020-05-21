@@ -1,6 +1,6 @@
 import router from "./index";
-import {getToken, removeToken} from "../utils/app";
-
+import {getToken, removeToken,removeUserName} from "../utils/app";
+import store from "../store/index";
 
 //声明白名单
 const whiteRouter = ['/login']; //indexOf方法，判断数字中是否存在指定的某个对象,如果不存在返回-1
@@ -10,7 +10,11 @@ router.beforeEach((to, from, next)=>{
   if(getToken()){
       console.log('到底',to)
       if(to.path === '/login'){
+          //退出登录到login页面
           removeToken();
+          removeUserName();
+          store.commit("app/SET_TOKEN",'');
+          store.commit("app/SET_USERNAME",'');
           next();
       }else{
           next();

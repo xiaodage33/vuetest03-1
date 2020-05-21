@@ -1,6 +1,6 @@
 // import cookie  from "cookie_js";
 import { Login } from "../../api/login";
-import {setToken,setUserName,getUserName} from "../../utils/app";
+import {setToken, removeToken, setUserName, getUserName, removeUserName} from "../../utils/app";
 
 
 const state= {
@@ -61,7 +61,18 @@ const actions={  //可以回调处理事情
                 })
             })
 
-          }}
+          },
+        exit({commit}){
+            return new Promise((resolve,reject)=>{
+                removeToken();
+                removeUserName();
+                commit('SET_TOKEN','');
+                commit('SET_USERNAME','');
+                resolve();
+            })
+        }
+
+}
 
 export default {
     namespaced: true,  //处理命名空间问题
