@@ -1,5 +1,5 @@
 import router from "./index";
-import { getToken } from "../utils/app";
+import {getToken, removeToken} from "../utils/app";
 
 
 //声明白名单
@@ -8,6 +8,15 @@ const whiteRouter = ['/login']; //indexOf方法，判断数字中是否存在指
 //路由守卫
 router.beforeEach((to, from, next)=>{
   if(getToken()){
+      console.log('到底',to)
+      if(to.path === '/login'){
+          removeToken();
+          next();
+      }else{
+          next();
+      }
+
+
       //路由动态添加，分配菜单，每个角色分配不同的菜单 username token
       console.log('存在token')
   }else{

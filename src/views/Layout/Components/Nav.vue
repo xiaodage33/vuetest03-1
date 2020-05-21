@@ -102,7 +102,7 @@ import { reactive, ref,isRef,toRefs,onMounted,computed} from '@vue/composition-a
 
     #nav-wrap{
         width: $navMenu;
-        height:100vh;
+        height:100%;
         background-color: #344a5f;
         @include webkit(transition,all .3s ease 0s);
         /*@include引入*/
