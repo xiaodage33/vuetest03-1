@@ -20,6 +20,8 @@
             const navMenuState = () => {
                 //app使用了命名空间
                 root.$store.commit('app/SET_COLLAPSE')
+                // root.$store.commit('login/SET_COLLAPSE')
+
 
                 // root.$store.dispatch('setMenuStatus',{"name":"aaaa"})
 

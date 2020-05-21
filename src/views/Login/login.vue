@@ -353,23 +353,19 @@ export default {
             })
 
         /**登录**/
-        const login =(()=>{
-            let requestData={
-                username : ruleForm.username,
-                password : sha1(ruleForm.password),
-                code: ruleForm.code
-            }
-            root.$store.dispatch('login',requestData).then(response => {
-
-                    console.log('登录成功')
-                    console.log(response)
-                    root.$router.push({
-                        //页面跳转
-                        name: 'Console'
-                    })
-                }).catch(error => {
-
-                });
+              const login = (() => {
+                let repuestData = {
+                  username: ruleForm.username,
+                  password: sha1(ruleForm.password),
+                  code: ruleForm.code
+                }
+                root.$store.dispatch('app/login', repuestData).then(response => {
+                  // 页面跳转
+                  root.$router.push({
+                    name: 'Console'
+                  })
+                }).catch(error => {});
+              })
                 // Login(requestData).then(response =>{
                 //     console.log('登录成功')
                 //     console.log(response)
@@ -387,7 +383,7 @@ export default {
                 //     clearCountDown() //清除验证码发送状态
                 //
                 //
-            })
+
 
 
         /**注册**/
