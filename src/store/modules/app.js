@@ -1,9 +1,13 @@
 
+import { Login } from "../../api/login";
+import {setToken,setUserName} from "../../utils/app";
 
 
 const state= {
 
     isCollapse: JSON.parse(sessionStorage.getItem('isCollapse')) || false,
+    to_ken:'',
+    username: ''
 
 }
 
@@ -15,21 +19,39 @@ const getters = {
 const mutations = {
     SET_COLLAPSE(state) {
         state.isCollapse = !state.isCollapse;
-        sessionStorage.setItem('isCollapse',JSON.stringify(state.isCollapse));
+        sessionStorage.setItem('isCollapse', JSON.stringify(state.isCollapse));
         //区分哪个命名空间
         console.log('app')
+    },
 
-
+    SET_TOKEN(state,value){
+        state.to_ken = value
+        },
+    SET_USERNAME(state,value){
+        state.username = value
     }
+
 
 }
 
 const actions={  //可以回调处理事情
-        login(content,requestData) {
+        login({commit},requestData) {
             return new Promise((resolve, reject) => {
                 //接口
                 Login(requestData).then((response) => {
+                    console.log(response)
+                    //response输出可以看到data信息数据
+                    let data = response.data.data
+                    // content.commit('SET_TOKEN',data.token);
+                    // content.commit('SET_USERNAME',data.username);
+                    commit('SET_TOKEN',data.token);
+                    commit('SET_USERNAME',data.username);
+                    setToken(data.token);
+                    setUserName((data.username));
 
+                    // let data = response.data
+                    // console.log(content)
+                    // content.commit('SET_TOKEN',data.token);   //token username
                     resolve(response)
                 }).catch(error => {
                     reject(error)
@@ -50,7 +72,6 @@ export default {
 
 
 
-import { Login } from "../../api/login";
 //
 // const app={
 //

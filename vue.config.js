@@ -66,7 +66,8 @@ module.exports = {
                 //配置跨域
                 '/__api__': {
                         // target: "http://127.0.0.1:9999/drftest/show",
-                        target: "http://www.web-jshtml.cn/productapi",
+                        // target: "http://www.web-jshtml.cn/productapi",
+                        target: "http://www.web-jshtml.cn/productapi/token", //验证token
                         ws:true,
                         changOrigin: true,
                         pathRewrite: {

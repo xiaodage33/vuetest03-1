@@ -8,7 +8,7 @@ const whiteRouter = ['/login']; //indexOf方法，判断数字中是否存在指
 //路由守卫
 router.beforeEach((to, from, next)=>{
   if(getToken()){
-      //路由动态添加，分配菜单，每个角色分配不同的菜单
+      //路由动态添加，分配菜单，每个角色分配不同的菜单 username token存储
       console.log('存在token')
   }else{
     //不能直接使用  next('/login') 不然会一直跳转
