@@ -359,7 +359,8 @@ export default {
                 password : sha1(ruleForm.password),
                 code: ruleForm.code
             }
-            root.$store.dispatch('login',requestData).then(response => {
+            //整合了命名空间
+            root.$store.dispatch('app/login',requestData).then(response => {
 
                     console.log('登录成功')
                     console.log(response)
