@@ -1,18 +1,21 @@
-
+// import cookie  from "cookie_js";
 import { Login } from "../../api/login";
-import {setToken,setUserName} from "../../utils/app";
+import {setToken,setUserName,getUserName} from "../../utils/app";
 
 
 const state= {
 
     isCollapse: JSON.parse(sessionStorage.getItem('isCollapse')) || false,
     to_ken:'',
-    username: ''
+    // username: cookie.get('username') || ''
+    username:  getUserName() || ''
+
 
 }
 
 const getters = {
-    isCollapse: state => state.iscollapse
+    isCollapse: state => state.isCollapse,
+    // username: state => state.username
 
 }
 

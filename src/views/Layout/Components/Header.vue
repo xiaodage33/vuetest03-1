@@ -6,17 +6,22 @@
             </div>
         </div>
         <div class="pull-right">
-            <span>管理员</span>
+            <span style="color: red;font-size: 15px;">
+                <svg-icon  iconClass="manrenwu" className="manrenwu"  />
+               账户： {{username}}</span>
             <svg-icon iconClass="quit" className="quit"/>
         </div>
     </div>
 </template>
 
 <script>
+    import { computed } from '@vue/composition-api'
     export default {
         // name: "header"
         name: "layoutHeader",
         setup(props, {root}) {
+            const username = computed(()=> root.$store.state.app.username)
+
             const navMenuState = () => {
                 //app使用了命名空间
                 root.$store.commit('app/SET_COLLAPSE')
@@ -27,7 +32,8 @@
 
             }
             return {
-                navMenuState
+                navMenuState,
+                username
             }
         }
 
