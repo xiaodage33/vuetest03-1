@@ -21,8 +21,6 @@
                 </template>
                 <!--子级菜单在childern里面得到名字v-for如果有主菜单，二级菜单也配置图标后有显示-->
                 <el-menu-item v-for="subItem in item.children" :key="subItem.id"   :index="subItem.path" >{{subItem.meta.name}}</el-menu-item>   <!---index="subItem.path"做子菜单的路径  ;;  :class="item.meta.icon"-->
-
-
             </el-submenu>
             </template>
         </el-menu>
@@ -48,8 +46,6 @@ import { reactive, ref,isRef,toRefs,onMounted,computed} from '@vue/composition-a
                 // console.log(root.$store.state.isCollapse)
                 return root.$store.state.app.isCollapse
             });
-
-
             //函数
             const handleOpen = (key, keyPath) => {
                 console.log(key, keyPath);
@@ -76,11 +72,7 @@ import { reactive, ref,isRef,toRefs,onMounted,computed} from '@vue/composition-a
                 handleOpen,
                 handleClose,
                 routers
-
             }
-
-
-
     }
     }
 

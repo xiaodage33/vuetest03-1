@@ -66,10 +66,10 @@
 }
 
 .header-icon {
-    padding: 0 32px;
+    padding: 0 10px;
     svg {
         margin-bottom: -8px;
-        font-size: 25px;
+        font-size: 10px;
         cursor: pointer;
     }
 
